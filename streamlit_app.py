@@ -3,7 +3,7 @@ import os
 import streamlit as st
 from huggingface_hub import InferenceClient
 
-MODEL_ID = os.getenv("MODEL_ID", "Qwen/Qwen3-1.7B")
+MODEL_ID = os.getenv("MODEL_ID", "Qwen/Qwen2.5-1.5B-Instruct")
 MAX_NEW_TOKENS = int(os.getenv("MAX_NEW_TOKENS", "256"))
 SYSTEM_PROMPT = os.getenv(
     "SYSTEM_PROMPT",

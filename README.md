@@ -1,6 +1,6 @@
 # Sangram's Tantra
 
-A personal AI assistant powered by [Qwen3-1.7B](https://huggingface.co/Qwen/Qwen3-1.7B), Hugging Face Inference API, and Streamlit.
+A personal AI assistant powered by [Qwen2.5-1.5B-Instruct](https://huggingface.co/Qwen/Qwen2.5-1.5B-Instruct), Hugging Face Inference API, and Streamlit.
 
 ## Deploy on Streamlit Community Cloud
 
@@ -34,7 +34,7 @@ Free inference includes limited usage/credits and may have rate limits. The app 
 
 Optional Streamlit secrets/environment variables:
 
-- `MODEL_ID` — defaults to `Qwen/Qwen3-1.7B`
+- `MODEL_ID` — defaults to `Qwen/Qwen2.5-1.5B-Instruct`
 - `MAX_NEW_TOKENS` — defaults to `256`
 - `SYSTEM_PROMPT` — the assistant's behavior instructions
 
