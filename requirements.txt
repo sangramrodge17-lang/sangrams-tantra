@@ -1,5 +1,4 @@
-# Sangram's Tantra — cloud runtime dependencies
-gradio>=5.20.0
+streamlit>=1.42.0
 transformers>=4.51.0
 accelerate>=1.6.0
 torch>=2.6.0
