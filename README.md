@@ -1,6 +1,6 @@
 # Sangram's Tantra
 
-A personal AI assistant powered by Llama 3.1 8B, the Groq API, and Streamlit.
+A personal AI assistant powered by Gemini Flash-Lite, Google AI Studio, and Streamlit.
 
 ## Deploy on Streamlit Community Cloud
 
@@ -11,39 +11,38 @@ A personal AI assistant powered by Llama 3.1 8B, the Groq API, and Streamlit.
 5. Set the main file path to `streamlit_app.py`.
 6. Click **Deploy**.
 
-## Add the Groq API key
+## Add the Gemini API key
 
-1. Create a free developer account at [Groq Console](https://console.groq.com/).
-2. Open [Groq API Keys](https://console.groq.com/keys).
-3. Create an API key and copy it privately.
+1. Open [Google AI Studio API Keys](https://aistudio.google.com/apikey).
+2. Sign in with your Google account.
+3. Click **Create API key** and copy it privately.
 4. In Streamlit, open **Manage app → Settings → Secrets**.
-5. Add exactly:
+5. Remove old `HF_TOKEN` or `GROQ_API_KEY` entries if present.
+6. Add exactly:
 
 ```toml
-GROQ_API_KEY = "gsk_your_key_here"
+GEMINI_API_KEY = "your_gemini_key_here"
 ```
 
-6. Save and reboot the app.
+7. Save and reboot the app.
 
-Never put the API key in GitHub code or send it in chat. Groq’s free developer tier has rate and usage limits; do not add billing unless you choose to do so.
+Never put the API key in GitHub code or send it in chat. Google AI Studio has a free tier with rate limits; Google may require billing for higher limits or some models. This app uses `gemini-2.5-flash-lite`.
 
 ## Current model
 
-The app uses Groq’s fast hosted model:
-
 ```text
-llama-3.1-8b-instant
+gemini-2.5-flash-lite
 ```
 
-The model runs in the cloud, so your computer does not download or run Qwen/PyTorch.
+The model runs in Google’s cloud, so your computer does not download or run PyTorch.
 
 ## Configuration
 
 Optional Streamlit secrets/environment variables:
 
-- `MAX_NEW_TOKENS` — defaults to `512`
+- `MAX_OUTPUT_TOKENS` — defaults to `512`
 - `SYSTEM_PROMPT` — the assistant's behavior instructions
 
 ## License and attribution
 
-The application code is provided under the MIT License in `LICENSE`. The hosted Llama model is provided by Groq/Meta under its applicable terms; review the current model and API terms before commercial use.
+The application code is provided under the MIT License in `LICENSE`. Gemini is a Google-hosted proprietary model accessed through the Gemini API and is subject to Google’s applicable terms and policies.
