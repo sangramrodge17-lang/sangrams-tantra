@@ -1,6 +1,6 @@
 # Sangram's Tantra
 
-A personal AI assistant powered by [Qwen2.5-1.5B-Instruct](https://huggingface.co/Qwen/Qwen2.5-1.5B-Instruct), Hugging Face Inference API, and Streamlit.
+A personal AI assistant powered by Llama 3.1 8B, the Groq API, and Streamlit.
 
 ## Deploy on Streamlit Community Cloud
 
@@ -11,33 +11,39 @@ A personal AI assistant powered by [Qwen2.5-1.5B-Instruct](https://huggingface.c
 5. Set the main file path to `streamlit_app.py`.
 6. Click **Deploy**.
 
-## Add the Hugging Face token
+## Add the Groq API key
 
-The app uses hosted inference, so Streamlit does not download or run PyTorch locally. A Hugging Face access token is required.
-
-1. Open the deployed app.
-2. Click **Manage app**.
-3. Open **Settings → Secrets**.
-4. Add this TOML entry:
+1. Create a free developer account at [Groq Console](https://console.groq.com/).
+2. Open [Groq API Keys](https://console.groq.com/keys).
+3. Create an API key and copy it privately.
+4. In Streamlit, open **Manage app → Settings → Secrets**.
+5. Add exactly:
 
 ```toml
-HF_TOKEN = "hf_your_token_here"
+GROQ_API_KEY = "gsk_your_key_here"
 ```
 
-5. Save and reboot the app.
+6. Save and reboot the app.
 
-Create the token at [Hugging Face Settings → Access Tokens](https://huggingface.co/settings/tokens). Use a token with inference permission. Never put the token in GitHub code or send it in chat.
+Never put the API key in GitHub code or send it in chat. Groq’s free developer tier has rate and usage limits; do not add billing unless you choose to do so.
 
-Free inference includes limited usage/credits and may have rate limits. The app no longer needs local PyTorch, Transformers, or model weights.
+## Current model
+
+The app uses Groq’s fast hosted model:
+
+```text
+llama-3.1-8b-instant
+```
+
+The model runs in the cloud, so your computer does not download or run Qwen/PyTorch.
 
 ## Configuration
 
 Optional Streamlit secrets/environment variables:
 
-- `MODEL_ID` — defaults to `Qwen/Qwen2.5-1.5B-Instruct`
-- `MAX_NEW_TOKENS` — defaults to `256`
+- `MAX_NEW_TOKENS` — defaults to `512`
 - `SYSTEM_PROMPT` — the assistant's behavior instructions
 
 ## License and attribution
 
-Qwen3 open-weight models are released under Apache 2.0 according to the official Qwen repository. Keep the model's license and notices when redistributing or modifying this project. This application code is provided under the MIT License in `LICENSE`.
+The application code is provided under the MIT License in `LICENSE`. The hosted Llama model is provided by Groq/Meta under its applicable terms; review the current model and API terms before commercial use.
