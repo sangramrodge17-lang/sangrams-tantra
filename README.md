@@ -1,6 +1,6 @@
 # Sangram's Tantra
 
-A personal AI assistant powered by [Qwen3-1.7B](https://huggingface.co/Qwen/Qwen3-1.7B) and Streamlit.
+A personal AI assistant powered by [Qwen3-1.7B](https://huggingface.co/Qwen/Qwen3-1.7B), Hugging Face Inference API, and Streamlit.
 
 ## Deploy on Streamlit Community Cloud
 
@@ -11,26 +11,32 @@ A personal AI assistant powered by [Qwen3-1.7B](https://huggingface.co/Qwen/Qwen
 5. Set the main file path to `streamlit_app.py`.
 6. Click **Deploy**.
 
-The app downloads the model from Hugging Face when it starts. The first startup can take several minutes, and free CPU hosting may be slow or sleep when unused.
+## Add the Hugging Face token
 
-## What this repository contains
+The app uses hosted inference, so Streamlit does not download or run PyTorch locally. A Hugging Face access token is required.
 
-- `streamlit_app.py` — the Streamlit chat application
-- `app.py` — the earlier Gradio version
-- `requirements.txt` — cloud dependencies
-- The model weights are **not** stored in this GitHub repository.
+1. Open the deployed app.
+2. Click **Manage app**.
+3. Open **Settings → Secrets**.
+4. Add this TOML entry:
+
+```toml
+HF_TOKEN = "hf_your_token_here"
+```
+
+5. Save and reboot the app.
+
+Create the token at [Hugging Face Settings → Access Tokens](https://huggingface.co/settings/tokens). Use a token with inference permission. Never put the token in GitHub code or send it in chat.
+
+Free inference includes limited usage/credits and may have rate limits. The app no longer needs local PyTorch, Transformers, or model weights.
 
 ## Configuration
 
-Optional environment variables can be added in Streamlit Cloud advanced settings:
+Optional Streamlit secrets/environment variables:
 
 - `MODEL_ID` — defaults to `Qwen/Qwen3-1.7B`
 - `MAX_NEW_TOKENS` — defaults to `256`
 - `SYSTEM_PROMPT` — the assistant's behavior instructions
-
-## Troubleshooting
-
-If the app runs out of memory, set `MODEL_ID` to `Qwen/Qwen3-0.6B` in the Streamlit app secrets/environment settings, or reduce `MAX_NEW_TOKENS` to `128`.
 
 ## License and attribution
 
